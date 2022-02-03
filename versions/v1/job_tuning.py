@@ -81,7 +81,7 @@ try:
     #target = job['target']
     test = job['test']
 
-    output_dir = args.volume + '/test_%d_sort_%d'%(test,sort)
+    output_path = args.volume + '/test_%d_sort_%d'%(test,sort)
 
 
     # create models
