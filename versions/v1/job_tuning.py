@@ -85,7 +85,7 @@ try:
 
 
     # create models
-    model = Discr_v1().model
+    model = CNN_v1().model
     
     height = model.layers[0].input_shape[0][1]
     width  = model.layers[0].input_shape[0][2]
