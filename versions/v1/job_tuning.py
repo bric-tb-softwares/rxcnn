@@ -83,6 +83,7 @@ try:
 
     output_path = args.volume + '/test_%d_sort_%d'%(test,sort)
 
+    os.makedirs(output_path, exist_ok=True)
 
     # create models
     model = CNN_v1().model
