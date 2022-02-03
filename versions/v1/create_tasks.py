@@ -7,7 +7,7 @@ path = basepath
 # Prepare my job script!
 #
 
-# remove all by hand in case of job retry... NOTE: some jobs needs to recover s
+# remove all by hand in case of job retry...
 exec_cmd = "(rm -rf .complete || true) && " # some protections
 exec_cmd = "(rm -rf rxccore || true) && " # some protections
 exec_cmd = "(rm -rf rxcnn || true) && " # some protections
@@ -27,12 +27,11 @@ exec_cmd+= "rm -rf rxwgan && rm -rf rxcore"
 
 command = """maestro.py task create \
   -v {PATH} \
-  -t user.jodafons.Shenzhen.notuberculosis.model_wgangp.test_{TEST} \
-  -c user.jodafons.job.Shenzhen.notuberculosis \
-  -d user.jodafons.Shenzhen_table_from_raw.csv \
+  -t user.jodafons.task.Shenzhen.model_cnn.v1 \
+  -c user.jodafons.job.Shenzhen.model_cnn.v1.10tests.10sorts \
+  -d user.jodafons.data.Shenzhen_table_from_raw.csv \
   --exec "{EXEC}" \
   --queue "gpu" \
-  --bypass_local_test \
   """
 
 try:

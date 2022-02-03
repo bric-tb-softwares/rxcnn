@@ -17,10 +17,8 @@ import numpy as np
 import argparse
 from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from rxwgan.wgangp import wgangp_optimizer
-from rxwgan.models.models_v1 import *
-from rxwgan.stratified_kfold import stratified_train_val_test_splits
-from sklearn.model_selection import KFold
+from rxcnn.models import *
+from rxcore.stratified_kfold import stratified_train_val_test_splits
 import tensorflow as tf  
 import json
 
@@ -50,24 +48,12 @@ parser.add_argument('-j','--job', action='store',
 #
 
 parser.add_argument('--batch_size', action='store', 
-    dest='batch_size', required = False, default = 32, type=int,
+    dest='batch_size', required = False, default = 64, type=int,
     help = "train batch_size")
 
 parser.add_argument('--epochs', action='store', 
     dest='epochs', required = False, default = 1000, type=int,
     help = "Number of epochs.")
-
-parser.add_argument('--n_discr', action='store', 
-    dest='n_discr', required = False, default = 0, type=int, 
-    help = "Update the discriminator after n batches.")
-
-parser.add_argument('--save_for_each', action='store', 
-    dest='save_for_each', required = False, default = 50, type=int, 
-    help = "Save model after N epochs.")
-
-parser.add_argument('--disp_for_each', action='store', 
-    dest='disp_for_each', required = False, default = 50, type=int, 
-    help = "Save plots after N epochs.")
 
 parser.add_argument('--seed', action='store', 
     dest='seed', required = False, default = 512, type=int, 
